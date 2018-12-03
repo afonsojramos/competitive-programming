@@ -6,6 +6,7 @@ Table of Contents
 2. [Imports](#imports)
 3. [Functions](#functions)
 4. [Variables](#packages)
+5. [For](#for)
 
 #### Packages
 
@@ -49,6 +50,10 @@ import (
 Functions have their types defined after the declaration of parameters. Functions can also have multiple returns.
 
 ```go
+func sub(x int, y int) int {
+    return x - y
+}
+
 func add(x int, y int) (string, int) {
     return "Sum is equal to", y + x
 }
@@ -173,5 +178,37 @@ const (
 	Small = Big >> 99
 )
 ```
+
+[⬆ Back to the top!](#go-guide)
+
+#### For
+
+Like many other languages, the basic for loop has three components separated by semicolons, the init statement, the condition expression and the post statement; and it will stop iterating once the boolean condition evaluates to `false`.
+```go
+sum := 0
+for i := 0; i < 10; i++ {
+	sum += i
+}
+```
+
+The init and post statements are optional.
+
+```go
+sum := 1
+for ; sum < 1000; {
+	sum += sum
+}
+```
+
+And so are the semicolons, the **For is Go's "while"**
+
+```go
+sum := 1
+for sum < 1000 {
+	sum += sum
+}
+```
+
+The so called "while (true)" can be just written like this: **`for {		}`**
 
 [⬆ Back to the top!](#go-guide)
