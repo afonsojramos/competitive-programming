@@ -26,6 +26,8 @@ func main() {
 }
 ```
 
+[⬆ Back to the top!](#go-guide)
+
 #### Imports
 
 Imports can be either multi-line or factored, but it is a good practice to use the latter. 
@@ -39,6 +41,8 @@ import (
 	"math"
 )
 ```
+
+[⬆ Back to the top!](#go-guide)
 
 #### Functions
 
@@ -57,6 +61,8 @@ func moduleOf2(num int) (x int) {
 	return
 }
 ```
+
+[⬆ Back to the top!](#go-guide)
 
 #### Variables
 
@@ -167,3 +173,5 @@ const (
 	Small = Big >> 99
 )
 ```
+
+[⬆ Back to the top!](#go-guide)
