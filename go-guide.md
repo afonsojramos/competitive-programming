@@ -1,7 +1,13 @@
 # Go Guide
-In here I will try to save some of the most important lessons I learn while learning Golang.
+In here I will *try* to save some of the most important lessons I learn while learning Golang.
 
-#### Go is made of packages
+Table of Contents
+1. [Packages](#packages)
+2. [Imports](#imports)
+3. [Functions](#functions)
+4. [Variables](#packages)
+
+#### Packages
 
 Every Go program is made up of packages. When importing a package, only exported names can be referred to. Any "unexported" names are not accessible from outside the package.
 
@@ -152,3 +158,12 @@ g -> complex128
 `const Pi = 3.14`
 
 **Constants** can be **untyped** taking the type by its context, and can be high precision values.
+
+```go
+const (
+	// Shift 1 bit left 100 places.
+	Big = 1 << 100
+	// Shift it right again 99 places, so we end up with 1<<1 aka 2.
+	Small = Big >> 99
+)
+```
