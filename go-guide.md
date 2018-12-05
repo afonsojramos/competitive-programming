@@ -201,7 +201,7 @@ const (
 
 #### For
 
-Like many other languages, the basic for loop has three components separated by semicolons, the init statement, the condition expression and the post statement; and it will stop iterating once the boolean condition evaluates to `false`.
+Like many other languages, the basic for loop has three components separated by semicolons, the init statement, the condition expression and the post statement; and it will stop iterating once the boolean condition evaluates to `false`. As you can see the expression does not need to be surrounded by parentheses `( )` but the braces `{ }` are required. 
 ```go
 sum := 0
 for i := 0; i < 10; i++ {
