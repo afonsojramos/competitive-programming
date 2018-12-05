@@ -1,12 +1,30 @@
 # Go Guide
 In here I will *try* to save some of the most important lessons I learn while learning Golang.
 
-Table of Contents
-1. [Packages](#packages)
-2. [Imports](#imports)
-3. [Functions](#functions)
-4. [Variables](#packages)
-5. [For](#for)
+### Table of Contents
+1. [Install](#Install)
+2. [Packages](#packages)
+3. [Imports](#imports)
+4. [Functions](#functions)
+5. [Variables](#packages)
+6. [For](#for)
+
+#### Install
+
+Installing Go is rather easy since you have multiple options, allowing you to install it your way. I prefer to install it through my package manager, however it can be installed through [Go Intallation Guide](https://golang.org/doc/install).
+
+One thing to note is that the `GOPATH` environment variable is very important since it specifies the location of your workspace. If no `GOPATH` is set, it is assumed to be `$HOME/go` on Unix systems and `%USERPROFILE%\go` on Windows. If you want to use a custom location as your workspace, you can set the GOPATH environment variable by running the following command.
+
+```bash
+# example of defining /home as the GOPATH
+export GOPATH=$HOME
+```
+
+If you're using [VSCode's Go extension](https://github.com/Microsoft/vscode-go), it will also be useful to set the new `GOPATH` in the workspace settings, so that VSCode knows the new path to display import errors and such.
+
+```bash
+"go.gopath" = "$GOPATH"
+```
 
 #### Packages
 
