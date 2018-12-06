@@ -302,3 +302,11 @@ for i := 0; i < 10; i++ {
 ```
 
 [⬆ Back to the top!](#go-guide)
+
+#### Strings 
+
+In Go, a string is just a **read-only slice of bytes**, which means that when accessing an index of a string you will get nothing but a byte, for example: `"abc"[0] = 97`. 
+
+However, you must pay attention to the fact that a string holds arbitrary bytes and it is not required to hold Unicode text, UTF-8 text, or any other predefined format. So, when parsing some weird UTF-8 characters, take that in consideration, since as far as the content of a string is concerned, it is **just** equivalent to a slice of bytes.
+
+[⬆ Back to the top!](#go-guide)
