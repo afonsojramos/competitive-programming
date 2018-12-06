@@ -52,3 +52,12 @@ func IntSum(xs []int) int {
 	}
 	return sum
 }
+
+// CharCounts returns the count of each character in s.
+func CharCounts(s string) map[rune]int {
+	chars := make(map[rune]int)
+	for _, c := range s {
+		chars[c]++
+	}
+	return chars
+}
