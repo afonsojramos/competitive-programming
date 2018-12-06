@@ -8,6 +8,9 @@ In here I will *try* to save some of the most important lessons I learn while le
 4. [Functions](#functions)
 5. [Variables](#packages)
 6. [For](#for)
+7. [If](#if)
+8. [Switch](#switch)
+9. [Defer](#defer)
 
 #### Install
 
@@ -228,5 +231,74 @@ for sum < 1000 {
 ```
 
 The so called "while (true)" can be just written like this: **`for {		}`**
+
+[⬆ Back to the top!](#go-guide)
+
+#### If
+
+Go's `if`, similar to `for` loops, do not need be surrounded by parentheses ( ) but the braces { } are required.
+
+```go
+if grade > 10 {
+	return "good enough"
+}
+```
+
+Like `for`, the `if` statement can start with a **short statement** to execute before the condition. Obviously, variables declared by the statement are only in scope until the end of the if.
+
+```go
+if grade := getGrade(); grade > 10 {
+	return grade
+} else {
+	grade += 10
+}
+```
+
+As you can see, the short statement is also available inside any of the `else` blocks, making it extremely useful to reduce the number of calls of a certain function. This is also really good in terms of performance, since the variable is only available inside these blocks and does not occupy a place in the stack.
+
+[⬆ Back to the top!](#go-guide)
+
+#### Switch
+
+Go's switch is like the one found in C, C++, Java, JavaScript, etc. however Go only runs the selected case, not all the cases that follow. In effect, the break statement that is needed at the end of each case in those languages is provided automatically in Go. Another important difference is that Go's switch cases do not need to be constants. And, of course, cases are evaluated from top to bottom, stopping when a case succeeds.
+
+```go
+switch state := getGameState(); state {
+	case "menu":
+		fmt.Println("Do you want to play?")
+	case "boss":
+		fmt.Println("Are you dead yet?")
+	case "gameover":
+		fmt.Println("Yep, guess so...")
+	default:
+		fmt.Println("Playing")
+}
+```
+
+A `switch true { }` can also be used, either with true or not (`switch { }`), effectively creating a clean if-then-else chain.
+
+[⬆ Back to the top!](#go-guide)
+
+#### Defer
+
+A defer statement defers the execution of a function until the surrounding function returns, however, note that the deferred call's arguments are evaluated immediately.
+
+```go
+func main() {
+	defer fmt.Println("world")
+
+	fmt.Println("hello")
+}
+// output -> hello world
+```
+
+When stacking defers calls are pushed onto a stack, and, when the function returns, its deferred calls are executed in last-in-first-out order.
+
+```go
+for i := 0; i < 10; i++ {
+	defer fmt.Print(i)
+}
+// output -> 9 8 7 6 5 4 3 2 1 0
+```
 
 [⬆ Back to the top!](#go-guide)
