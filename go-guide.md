@@ -409,3 +409,50 @@ fmt.Println(countToSix) // output -> [1 2 3 4 5 6]
 
 [⬆ Back to the top!](#go-guide)
 
+#### Slices 
+
+So, an array has a fixed size, solution -> **`slices`**. Slices are a dynamically-sized, and a flexible view into the elements of an array. In practice, slices are much more common than arrays in Go.
+
+The type `[]T` is a slice with elements of type `T`.
+
+A slice is formed by specifying two indices, a low and high bound, separated by a colon:
+
+```go
+a[low : high]
+```
+
+This selects a half-open range which includes the first element, but excludes the last one. The following expression creates a slice which includes elements 1 through 3 of a:
+
+```go
+countToSix := [6]int{1, 2, 3, 4, 5, 6}
+var s []int = countToSix[1:4] // output -> [2 3 4]
+```
+
+However, deep down, slices are like references to arrays and do not store any data, they just describe a section of an underlying array. Changing the elements of a slice modifies the corresponding elements of its underlying array. 
+
+***Note:*** Other slices that share the same underlying array will see those changes.
+
+```go
+countToSix := [6]int{1, 2, 3, 4, 5, 6}
+fmt.Println(countToSix)	// output -> [1 2 3 4 5 6]
+
+a := countToSix[0:2]
+b := countToSix[1:3]
+fmt.Println(a, b)	// output -> [1 2] [2 3]
+
+b[0] = 42
+fmt.Println(a, b)	// output -> [1 42] [42 3]
+fmt.Println(countToSix)	// output -> [1 42 3 4 5 6]
+```
+
+A **slice literal** is like an array literal without the length.
+
+This is an array literal: `[3]bool{true, true, false}`
+
+And this creates the same array as above, then builds a slice that references it: `[]bool{true, true, false}`
+
+When slicing, you may omit the high or low bounds to use their **slice defaults** instead.
+
+The default is zero for the low bound and the length of the slice for the high bound, for example `[:2]` uses 2 as the high bound and zero (the default) as the low bound.
+
+[⬆ Back to the top!](#go-guide)
