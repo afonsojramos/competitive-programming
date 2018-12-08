@@ -16,6 +16,7 @@ In here I will *try* to save some of the most important lessons I learn while le
 12. [Structs](#structs)
 13. [Arrays](#arrays)
 14. [Slices](#slices)
+15. [Range](#range)
 
 #### Install
 
@@ -507,5 +508,23 @@ s = append(s, 2, 3, 4)	// output -> len=5 cap=8 [0 1 2 3 4]
 ```
 
 > Only pay attention to the length since capacity is more or less pseudo-random. What actually happens is that when you create the new underlying array, it copies all the values over, and then set that as the backing array for the slice. And when appending lots of values, there would be a need to do one copy for every single value, which would be very slow, so instead the runtime allocates more space than it thinks you need so that it has to make copies less often. If you still want to read a more in-depth guide about slices, go to [Golang's blog](https://blog.golang.org/go-slices-usage-and-internals).
+
+[⬆ Back to the top!](#go-guide)
+
+#### Range
+
+The `range` form of the `for` loop iterates over a `slice` or `map` returning two values for each iteration. The first is the index, and the second is a copy of the element at that index. However, you can also only ask for one of the elements, skipping the index by assigning to _, or if you only want the index, dropping the value entirely.
+
+```go
+for index, value := range myslice {
+	//
+}
+for index := range myslice {
+	//
+}
+for _, value := range myslice {
+	//
+}
+```
 
 [⬆ Back to the top!](#go-guide)
