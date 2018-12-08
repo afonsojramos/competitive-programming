@@ -11,6 +11,10 @@ In here I will *try* to save some of the most important lessons I learn while le
 7. [If](#if)
 8. [Switch](#switch)
 9. [Defer](#defer)
+10. [Strings](#strings)
+11. [Pointers](#pointers)
+12. [Structs](#structs)
+13. [Arrays](#arrays)
 
 #### Install
 
@@ -309,4 +313,99 @@ In Go, a string is just a **read-only slice of bytes**, which means that when ac
 
 However, you must pay attention to the fact that a string holds arbitrary bytes and it is not required to hold Unicode text, UTF-8 text, or any other predefined format. So, when parsing some weird UTF-8 characters, take that in consideration, since as far as the content of a string is concerned, it is **just** equivalent to a slice of bytes.
 
+This is extremely useful, because, if you think about it, most of the times you want a specific part of a string, it is for comparison purposes. For example, in Day 2 it was necessary to count the times a character appeared, which led me to create the following function, and it is absolutely beautiful.
+
+```go
+// CharCounts returns the count of each character in s.
+func CharCounts(s string) map[rune]int {
+	chars := make(map[rune]int)
+	for _, c := range s {
+		chars[c]++
+	}
+	return chars
+}
+```
+
 [⬆ Back to the top!](#go-guide)
+
+#### Pointers 
+
+As usual, a pointer holds the memory address of a value. The type *T is a pointer to a T value, for example, `var p *int`, and its zero value is a nil. The & operator generates a pointer to its operand, while the * operator denotes the pointer's underlying value. Thankfully, unlike C, Go has no pointer arithmetic.
+
+```go
+universe, port := 42, 8080
+
+p := &universe			// pointer to universe
+fmt.Println(*p) 		// read universe through the pointer
+*p = 24         		// set universe through the pointer
+fmt.Print(universe)		// see the new value of universe
+
+p = &port         		// pointer to port
+*p = *p / 80   			// divide port through the pointer
+fmt.Println(port) 		// see the new value of port
+```
+
+[⬆ Back to the top!](#go-guide)
+
+#### Structs 
+
+As you might know a `struct` is a collection of fields, which are accessed using a dot.
+
+```go
+type Position struct {
+	X int
+	Y int
+}
+
+func main() {
+	pos := Position{1, 2}
+	pos.X = 4
+	fmt.Println(pos.X, pos.Y) // output -> 4 2
+}
+```
+
+Struct fields can also be accessed through a `struct pointer`. To access a field of a struct when we have the `struct pointer` p we could write `(*p).field`. However, that notation is a pain in the assets, so the language permits us instead to write just p.X, without the explicit dereference.
+
+```go
+pos := Position{1, 2}
+p := &pos
+p.X = 1e9
+fmt.Println(pos)
+```
+
+A **struct literal** denotes a newly allocated struct value by listing the values of its fields. You can also list just a subset of fields by using the `Name:` syntax. The special prefix `&` returns a pointer to the struct value.
+
+```go
+var (
+	pos1 = Position{1, 2} 	// has type Vertex
+	pos2 = Position{X: 1}  	// Y:0 is implicit
+	pos3 = Position{}      	// X:0 and Y:0
+	p  = &Position{1, 2} 	// has type *Vertex
+)
+
+func main() {
+	fmt.Println(pos1, p, pos2, pos3)
+}
+```
+
+[⬆ Back to the top!](#go-guide)
+
+#### Arrays 
+
+The type `[n]T` is an array of `n` values of type `T`. For example, `var a [10]int` declares a variable `a` as an array of *ten* integers.
+
+An array's length is part of its type, so arrays cannot be resized, however Go provides a convenient way of working with arrays.
+
+```go
+var a [2]string
+a[0] = "Advent of"
+a[1] = "Code"
+fmt.Println(a[0], a[1])	// output -> Advent of Code
+fmt.Println(a)		// output -> [Advent of Code]
+
+countToSix := [6]int{1, 2, 3, 4, 5, 6}
+fmt.Println(countToSix) // output -> [1 2 3 4 5 6]
+```
+
+[⬆ Back to the top!](#go-guide)
+
