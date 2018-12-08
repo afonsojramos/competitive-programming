@@ -15,6 +15,7 @@ In here I will *try* to save some of the most important lessons I learn while le
 11. [Pointers](#pointers)
 12. [Structs](#structs)
 13. [Arrays](#arrays)
+14. [Slices](#slices)
 
 #### Install
 
@@ -330,7 +331,7 @@ func CharCounts(s string) map[rune]int {
 
 #### Pointers 
 
-As usual, a pointer holds the memory address of a value. The type *T is a pointer to a T value, for example, `var p *int`, and its zero value is a nil. The & operator generates a pointer to its operand, while the * operator denotes the pointer's underlying value. Thankfully, unlike C, Go has no pointer arithmetic.
+As usual, a pointer holds the memory address of a value. The type *T is a pointer to a T value, for example, `var p *int`, and its zero value is a `nil`. The & operator generates a pointer to its operand, while the * operator denotes the pointer's underlying value. Thankfully, unlike C, Go has no pointer arithmetic.
 
 ```go
 universe, port := 42, 8080
@@ -454,5 +455,57 @@ And this creates the same array as above, then builds a slice that references it
 When slicing, you may omit the high or low bounds to use their **slice defaults** instead.
 
 The default is zero for the low bound and the length of the slice for the high bound, for example `[:2]` uses 2 as the high bound and zero (the default) as the low bound.
+
+```go
+func main() {
+	s := []int{1, 2, 3, 4, 5, 6}
+	printSlice(s) 	// output -> len=6 cap=6 [1 2 3 4 5 6]
+
+	s = s[:3]	// Slice the slice to give it three of length.
+	printSlice(s)	// output -> len=3 cap=6 [1 2 3]
+
+	s = s[:4]	// Extend its length.
+	printSlice(s)	// output -> len=4 cap=6 [1 2 3 4]
+
+	s = s[2:]	// Drop its first two values.
+	printSlice(s)	// output -> len=2 cap=4 [3 4]
+}
+
+func printSlice(s []int) {
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
+```
+
+Slices have a zero value of `nil` with length and capacity of 0 and no underlying array.
+
+You can also create slices with the built-in **`make`** function, effectively creating dynamically-sized arrays.
+
+You can either create giving two arguments (creating a zeroed array) or three, providing capacity.
+
+```go
+a := make([]int, 5)	// output -> a len=5 cap=5 [0 0 0 0 0]
+
+b := make([]int, 0, 5)	// output -> b len=0 cap=5 []
+
+c := b[:2]		// output -> c len=2 cap=5 [0 0]
+
+d := c[2:5]		// output -> d len=3 cap=3 [0 0 0]
+```
+
+You can also append new elements to a slice, using the provided **`append`** function, being the first parameter a slice of type `T`, and the rest are `T` values to append to the slice. As expected, the resulting value of append is a slice containing all the elements. 
+
+Don't worry about the possibility of the backing array of s being too small to fit all the given values, since a bigger array will be allocated, andt he returned slice will point to the newly allocated array.
+
+```go
+var s []int		// output -> len=0 cap=0 []
+
+s = append(s, 0)	// output -> len=1 cap=2 [0]
+
+s = append(s, 1)	// output -> len=2 cap=2 [0 1]
+
+s = append(s, 2, 3, 4)	// output -> len=5 cap=8 [0 1 2 3 4]
+```
+
+> Only pay attention to the length since capacity is more or less pseudo-random. What actually happens is that when you create the new underlying array, it copies all the values over, and then set that as the backing array for the slice. And when appending lots of values, there would be a need to do one copy for every single value, which would be very slow, so instead the runtime allocates more space than it thinks you need so that it has to make copies less often. If you still want to read a more in-depth guide about slices, go to [Golang's blog](https://blog.golang.org/go-slices-usage-and-internals).
 
 [⬆ Back to the top!](#go-guide)
