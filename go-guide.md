@@ -17,6 +17,10 @@ In here I will *try* to save some of the most important lessons I learn while le
 13. [Arrays](#arrays)
 14. [Slices](#slices)
 15. [Range](#range)
+16. [Maps](#maps)
+17. [Function Values](#function-values)
+18. [Function Closure](#function-closures)
+
 
 #### Install
 
@@ -524,6 +528,100 @@ for index := range myslice {
 }
 for _, value := range myslice {
 	//
+}
+```
+
+[⬆ Back to the top!](#go-guide)
+
+#### Maps
+
+But where are our precious maps? Here they are, whit a zero value of nil, which has no keys, nor can keys be added. The make function returns a map of the given type, initialized and ready for use.
+
+```go
+var m map[string]Position // Position is the previously used struct
+
+func main() {
+	m = make(map[string]Position)
+	m["Home"] = Position{
+		10, 10,
+	}
+	fmt.Println(m["Home"])
+}
+```
+
+Map literals are also possible, however, the key is necessary! If the top-level type is just a type name, you can omit it from the elements of the literal as seen on the second example.
+
+```go
+var m = map[string]Position{
+	"Home" : Position{
+		10, 10,
+	},
+	"Enemy Base": Position{
+		2, 10,
+	},
+}
+var mm = map[string]Position{
+	"Home": {10, 10},
+	"Enemy Base": {2, 10},
+}
+func main() {
+	fmt.Println(m) 	// output -> map[Home:{10 10} Enemy Base:{2 10}]
+	fmt.Println(mm) // output -> map[Home:{10 10} Enemy Base:{2 10}]
+}
+```
+
+Insert or update an element in map m: `m[key] = elem`
+
+Retrieve an element: `elem = m[key]`
+
+Delete an element: `delete(m, key)`
+
+Test that a key is present with a two-value assignment: `elem, ok = m[key]` , if key is in m, ok is true. If not, ok is false. If key is not in the map, then elem is the zero value for the map's element type. Of course that elem and ok have to be declared, if not use the short declaration `form elem, ok := m[key]`.
+
+[⬆ Back to the top!](#go-guide)
+
+#### Function Values
+
+So this might be a more confusing part, functions are values too and be passed around just like other values, so they might be used as function arguments and return values.
+
+```go
+func compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
+}
+
+func main() {
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12)) 	// calculates hypot of 5 and 12
+
+	fmt.Println(compute(hypot))  	// calculates hypot of what compute returns, ie sqrt(3*3+4*4)
+	fmt.Println(compute(math.Pow))  // calculates Pow of what compute returns, ie pow(3,4)
+}
+```
+
+#### Function Closures
+
+Another new concept, Go functions may also be closures, ie a function value that references variables from outside its body. The function may access and assign to the referenced variables; in this sense the function is "bound" to the variables.
+
+For example, the fibonacci function returns a closure.
+
+```go
+func fibonacci() func() int {
+    llast, last := 0, 1
+
+    return func() int {
+        llast, last = last, last + llast
+
+        return last
+    }
+}
+
+func main() {
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
+	}
 }
 ```
 
