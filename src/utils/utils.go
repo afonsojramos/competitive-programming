@@ -2,6 +2,7 @@ package utils
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -60,4 +61,12 @@ func CharCounts(s string) map[rune]int {
 		chars[c]++
 	}
 	return chars
+}
+
+// Sscanf is a passthrough for fmt.Sscanf that panics upon failure.
+func Sscanf(str, format string, args ...interface{}) {
+	_, err := fmt.Sscanf(str, format, args...)
+	if err != nil {
+		panic(err)
+	}
 }
