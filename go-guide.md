@@ -1,5 +1,5 @@
-# Go Guide
-In here I will *try* to save some of the most important lessons I learn while learning Golang.
+# Go Guide 🏁
+In here I will *try* 🤷‍♂️ to save some of the most important lessons I learn while learning Golang. 👨‍💻
 
 ### Table of Contents
 1. [Install](#Install)
@@ -599,6 +599,8 @@ func main() {
 	fmt.Println(compute(math.Pow))  // calculates Pow of what compute returns, ie pow(3,4)
 }
 ```
+
+[⬆ Back to the top!](#go-guide)
 
 #### Function Closures
 

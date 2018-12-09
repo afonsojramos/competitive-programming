@@ -1,7 +1,7 @@
 # advent-of-code-2018
-🎄 My submissions for this year's Advent of Code using Golang 🎁🎅
+### 🎄 My submissions for this year's Advent of Code using Golang 🎁🎅
 
-**[Go Guide Me!](https://github.com/afonsojramos/advent-of-code-2018/blob/master/go-guide.md)** 
+## **[Go Guide Me! 🏁](https://github.com/afonsojramos/advent-of-code-2018/blob/master/go-guide.md)** - small Golang guide made by me 👨‍💻 
 
 ## Advent of Code
 From the [Advent Of Code](https://adventofcode.com) page:
