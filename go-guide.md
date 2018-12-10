@@ -31,6 +31,8 @@ One thing to note is that the `GOPATH` environment variable is very important si
 ```bash
 # example of defining /home as the GOPATH
 export GOPATH=$HOME
+# my case in this project
+export GOPATH=$HOME/Documents/advent-of-code-2018
 ```
 
 If you're using [VSCode's Go extension](https://github.com/Microsoft/vscode-go), it will also be useful to set the new `GOPATH` in the workspace settings, so that VSCode knows the new path to display import errors and such.
