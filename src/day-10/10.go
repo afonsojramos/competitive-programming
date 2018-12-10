@@ -40,6 +40,7 @@ func main() {
 	/*
 		Being close doesn't mean that it's the final position, but at least we know it should be close to it.
 		For that reason, we will analyze some offsets
+		In my case the offset was -3
 	*/
 
 	for offset := -5; offset < 5; offset++ {
