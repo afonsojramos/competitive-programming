@@ -1,16 +1,16 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"utils"
 )
 
 const capDist = 'a' - 'A'
+const aCode = 'A'
+const zCode = 'Z'
 
-func main() {
-	// Part 1
-	line := utils.ReadLines("day-5/5.input")
-	chars := []byte(line[0])
+func reactPoly(chars []byte) []byte {
 	changes := true
 
 	for changes {
@@ -23,5 +23,25 @@ func main() {
 		}
 	}
 
-	fmt.Println(len(chars))
+	return chars
+}
+
+func main() {
+	// Part 1
+	line := utils.ReadLines("day-5/5.input")
+	chars := []byte(line[0])
+	fmt.Println(len(reactPoly(chars)))
+
+	// Part 2
+	min := 100000000000000
+	for charCode := aCode; charCode < zCode+1; charCode++ {
+		newChars := []byte(line[0])
+		newChars = bytes.Replace(newChars, []byte{byte(charCode)}, nil, -1)
+		newChars = bytes.Replace(newChars, []byte{byte(charCode + capDist)}, nil, -1)
+
+		if x := len(reactPoly(newChars)); x < min {
+			min = x
+		}
+	}
+	fmt.Println(min)
 }
