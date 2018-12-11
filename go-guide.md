@@ -630,3 +630,55 @@ func main() {
 ```
 
 [⬆ Back to the top!](#go-guide)
+
+#### Methods
+
+Go does not have classes, it does however, have the possibility of defining methods on types! The receiver appears in its own argument list between the func keyword and the method name, as you can see in the example below. One thing to note is that a method is just a function with a receiver argument, so the example below could also be done without a method and, instead of using `pos.Abs()` we could just use `Abs(pos)`
+
+```go
+type Position struct {
+	X, Y float64
+}
+
+func (pos Position) Abs() float64 {
+	return math.Sqrt(pos.X*pos.X + pos.Y*pos.Y)
+}
+
+func main() {
+	pos := Position{3, 4}
+	fmt.Println(pos.Abs())
+}
+```
+
+[⬆ Back to the top!](#go-guide)
+
+#### Pointer Receivers
+
+You can also declare methods with pointer receivers (this is useful if you want to change the original values of the object). This means the receiver type has the literal syntax *T for some type T, but of course T cannot itself be a pointer such as *int. Since these methods often need to modify their receiver, pointer receivers are more common than value receivers.
+
+```go
+type Position struct {
+	X, Y float64
+}
+
+func (pos Position) Abs() float64 {
+	return math.Sqrt(pos.X*pos.X + pos.Y*pos.Y)
+}
+
+func (pos *Position) Scale(f float64) {
+	pos.X = pos.X * f
+	pos.Y = pos.Y * f
+}
+
+func main() {
+	pos := Position{3, 4}
+	pos.Scale(10)
+	fmt.Println(pos.Abs())
+}
+```
+
+For the statement `pos.Scale(10)`, even though `pos` is a value and not a pointer, the method with the pointer receiver is called automatically because Go interprets the statement `pos.Scale(10)` as a theoretical `(&pos).Scale(10)` since the Scale method has a pointer receiver.
+
+Pointer receivers are extremely useful! Check out my first usages of it [Day 3 Solution](https://github.com/afonsojramos/advent-of-code-2018/blob/master/src/day-3/3.go)/[Day 4 Solution](https://github.com/afonsojramos/advent-of-code-2018/tree/master/src/day-4/4.go)! But basically it allows the method to modify the value that its receiver points to and it avoids copying the value on each method call (very nice in terms of efficiency, especially with big structs).
+
+[⬆ Back to the top!](#go-guide)
