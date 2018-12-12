@@ -3,6 +3,7 @@ package utils
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 	"regexp"
 	"strconv"
@@ -92,4 +93,10 @@ func RegSplit(text string, delimeter string) []string {
 	}
 	result[len(indexes)] = text[laststart:len(text)]
 	return result
+}
+
+// GetDigit returns a digit in a specific position
+func GetDigit(num, place int) int {
+	r := num % int(math.Pow(10, float64(place)))
+	return r / int(math.Pow(10, float64(place-1)))
 }

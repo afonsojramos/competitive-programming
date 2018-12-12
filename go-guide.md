@@ -45,7 +45,7 @@ If you're using [VSCode's Go extension](https://github.com/Microsoft/vscode-go),
 "go.gopath" = "$GOPATH"
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Packages
 
@@ -66,7 +66,7 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Imports
 
@@ -106,7 +106,7 @@ func moduleOf2(num int) (x int) {
 }
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Variables
 
@@ -218,7 +218,7 @@ const (
 )
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### For
 
@@ -250,7 +250,7 @@ for sum < 1000 {
 
 The so called "while (true)" can be just written like this: **`for {		}`**
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### If
 
@@ -274,7 +274,7 @@ if grade := getGrade(); grade > 10 {
 
 As you can see, the short statement is also available inside any of the `else` blocks, making it extremely useful to reduce the number of calls of a certain function. This is also really good in terms of performance, since the variable is only available inside these blocks and does not occupy a place in the stack.
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Switch
 
@@ -295,7 +295,7 @@ switch state := getGameState(); state {
 
 A `switch true { }` can also be used, either with true or not (`switch { }`), effectively creating a clean if-then-else chain.
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Defer
 
@@ -319,7 +319,7 @@ for i := 0; i < 10; i++ {
 // output -> 9 8 7 6 5 4 3 2 1 0
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Strings 
 
@@ -340,7 +340,7 @@ func CharCounts(s string) map[rune]int {
 }
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Pointers 
 
@@ -359,7 +359,7 @@ p = &port         		// pointer to port
 fmt.Println(port) 		// see the new value of port
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Structs 
 
@@ -402,7 +402,7 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Arrays 
 
@@ -421,7 +421,7 @@ countToSix := [6]int{1, 2, 3, 4, 5, 6}
 fmt.Println(countToSix) // output -> [1 2 3 4 5 6]
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Slices 
 
@@ -521,7 +521,7 @@ s = append(s, 2, 3, 4)	// output -> len=5 cap=8 [0 1 2 3 4]
 
 > Only pay attention to the length since capacity is more or less pseudo-random. What actually happens is that when you create the new underlying array, it copies all the values over, and then set that as the backing array for the slice. And when appending lots of values, there would be a need to do one copy for every single value, which would be very slow, so instead the runtime allocates more space than it thinks you need so that it has to make copies less often. If you still want to read a more in-depth guide about slices, go to [Golang's blog](https://blog.golang.org/go-slices-usage-and-internals).
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Range
 
@@ -539,7 +539,7 @@ for _, value := range myslice {
 }
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Maps
 
@@ -586,7 +586,7 @@ Delete an element: `delete(m, key)`
 
 Test that a key is present with a two-value assignment: `elem, ok = m[key]` , if key is in m, ok is true. If not, ok is false. If key is not in the map, then elem is the zero value for the map's element type. Of course that elem and ok have to be declared, if not use the short declaration `form elem, ok := m[key]`.
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Function Values
 
@@ -608,7 +608,7 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Function Closures
 
@@ -635,7 +635,7 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Methods
 
@@ -656,7 +656,7 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Pointer Receivers
 
@@ -687,7 +687,7 @@ For the statement `pos.Scale(10)`, even though `pos` is a value and not a pointe
 
 Pointer receivers are extremely useful! Check out my first usages of it [Day 3 Solution](https://github.com/afonsojramos/advent-of-code-2018/blob/master/src/day-3/3.go)/[Day 4 Solution](https://github.com/afonsojramos/advent-of-code-2018/tree/master/src/day-4/4.go)! But basically it allows the method to modify the value that its receiver points to and it avoids copying the value on each method call (very nice in terms of efficiency, especially with big structs).
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
 
 #### Interfaces
 
@@ -786,4 +786,4 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#Go-Guide-🏁)
+[⬆ Back to the top!](#table-of-contents)
