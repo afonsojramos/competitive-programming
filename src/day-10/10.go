@@ -77,9 +77,9 @@ func main() {
 			}
 		}
 
-		for y := minY[offset]; y < maxY[offset]; y++ {
+		for y := minY[offset]; y <= maxY[offset]; y++ {
 			line := ""
-			for x := minX[offset]; x < maxX[offset]; x++ {
+			for x := minX[offset]; x <= maxX[offset]; x++ {
 				line = line + output[x][y]
 			}
 			fmt.Fprint(file, line, "\n")
