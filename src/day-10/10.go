@@ -21,19 +21,19 @@ func getDist(a, b []int, second int) int {
 func main() {
 	// Part 1
 	lines := utils.ReadLines("day-10/10.input")
-	data := make([][]int, len(lines))
+	points := make([][]int, len(lines))
 
 	for i, line := range lines {
 		split := utils.RegSplit(line, "[=< ,>]+")
-		data[i] = []int{utils.Atoi(split[1]), utils.Atoi(split[2]), utils.Atoi(split[4]), utils.Atoi(split[5])}
+		points[i] = []int{utils.Atoi(split[1]), utils.Atoi(split[2]), utils.Atoi(split[4]), utils.Atoi(split[5])}
 	}
 
-	lastDistance := getDist(data[0], data[1], 0)
-	nextDistance := getDist(data[0], data[1], 1)
+	lastDistance := getDist(points[0], points[1], 0)
+	nextDistance := getDist(points[0], points[1], 1)
 	second := 2
 	for nextDistance < lastDistance {
 		lastDistance = nextDistance
-		nextDistance = getDist(data[0], data[1], second)
+		nextDistance = getDist(points[0], points[1], second)
 		second++
 	}
 	fmt.Println("Closest second:", second)
@@ -61,19 +61,19 @@ func main() {
 		maxX[offset] = 0
 		maxY[offset] = 0
 
-		for i := 0; i < len(data); i++ {
-			output[data[i][0]+data[i][2]*(second+offset)][data[i][1]+data[i][3]*(second+offset)] = "#"
-			if data[i][0]+data[i][2]*(second+offset) < minX[offset] {
-				minX[offset] = data[i][0] + data[i][2]*(second+offset)
+		for i := 0; i < len(points); i++ {
+			output[points[i][0]+points[i][2]*(second+offset)][points[i][1]+points[i][3]*(second+offset)] = "#"
+			if points[i][0]+points[i][2]*(second+offset) < minX[offset] {
+				minX[offset] = points[i][0] + points[i][2]*(second+offset)
 			}
-			if data[i][1]+data[i][3]*(second+offset) < minY[offset] {
-				minY[offset] = data[i][1] + data[i][3]*(second+offset)
+			if points[i][1]+points[i][3]*(second+offset) < minY[offset] {
+				minY[offset] = points[i][1] + points[i][3]*(second+offset)
 			}
-			if data[i][0]+data[i][2]*(second+offset) > maxX[offset] {
-				maxX[offset] = data[i][0] + data[i][2]*(second+offset)
+			if points[i][0]+points[i][2]*(second+offset) > maxX[offset] {
+				maxX[offset] = points[i][0] + points[i][2]*(second+offset)
 			}
-			if data[i][1]+data[i][3]*(second+offset) > maxY[offset] {
-				maxY[offset] = data[i][1] + data[i][3]*(second+offset)
+			if points[i][1]+points[i][3]*(second+offset) > maxY[offset] {
+				maxY[offset] = points[i][1] + points[i][3]*(second+offset)
 			}
 		}
 
