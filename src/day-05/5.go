@@ -28,7 +28,7 @@ func reactPoly(chars []byte) []byte {
 
 func main() {
 	// Part 1
-	line := utils.ReadLines("day-5/5.input")
+	line := utils.ReadLines("day-05/5.input")
 	chars := []byte(line[0])
 	fmt.Println(len(reactPoly(chars)))
 

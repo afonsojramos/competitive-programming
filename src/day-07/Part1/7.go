@@ -21,7 +21,7 @@ func (s runes) Less(i, j int) bool {
 }
 
 func main() {
-	lines := utils.ReadLines("day-7/7.input")
+	lines := utils.ReadLines("day-07/7.input")
 	requirements := make(map[rune][]rune)
 	nTasks := make(map[rune]int)
 

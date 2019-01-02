@@ -45,7 +45,7 @@ func (g *guard) minuteMinMax() (min, n int) {
 
 func main() {
 	// Part 1
-	lines := utils.ReadLines("day-4/4.input")
+	lines := utils.ReadLines("day-04/4.input")
 	sort.Strings(lines)
 	guards := make(map[int]guard)
 

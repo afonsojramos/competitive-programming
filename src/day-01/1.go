@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// Part 1
-	dat := utils.ReadLines("day-1/1.input")
+	dat := utils.ReadLines("day-01/1.input")
 	nums := utils.IntList(dat)
 	fmt.Println(utils.IntSum(nums))
 

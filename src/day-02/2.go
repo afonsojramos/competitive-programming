@@ -23,7 +23,7 @@ func compareRest(line string, lines []string) (bool, string) {
 }
 
 func main() {
-	lines := utils.ReadLines("day-2/2.input")
+	lines := utils.ReadLines("day-02/2.input")
 	// Part 1
 	var doubles, triples int
 	for _, line := range lines {

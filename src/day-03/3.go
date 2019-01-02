@@ -33,7 +33,7 @@ func (c *claim) overlap(grid [][]int) bool {
 func main() {
 	// Part 1
 	var claims []claim
-	dat := utils.ReadLines("day-3/3.input")
+	dat := utils.ReadLines("day-03/3.input")
 	for _, line := range dat {
 		var c claim
 		utils.Sscanf(line, "#%d @ %d,%d: %dx%d", &c.id, &c.x, &c.y, &c.w, &c.h)
