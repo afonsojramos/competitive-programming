@@ -68,7 +68,7 @@ func main() {
 	split := utils.RegSplit(line, " ")
 	node := getNode(0, split)
 
-	fmt.Println(node)
+	//fmt.Println(node)
 
 	fmt.Println("Sum:", sumMeta(node))
 	fmt.Println("Root value:", sumNodeValue(node))
