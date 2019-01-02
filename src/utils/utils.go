@@ -9,6 +9,13 @@ import (
 	"strconv"
 )
 
+//Str2Int converts a string to an int and handles errors
+func Str2Int(str string) int {
+	i, err := strconv.Atoi(str)
+	Check(err)
+	return i
+}
+
 // Check panics if error is nil
 func Check(e error) {
 	if e != nil {
