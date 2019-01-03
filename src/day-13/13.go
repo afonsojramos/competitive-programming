@@ -29,7 +29,7 @@ func (c *cart) move() {
 func (c *cart) tick(grid [][]byte) {
 	c.move()
 
-	switch grid[c.x][c.y] {
+	switch grid[c.y][c.x] {
 	case '+':
 		switch c.turn % 3 {
 		case 0:
@@ -67,8 +67,6 @@ func (c *cart) tick(grid [][]byte) {
 			c.dir = left
 		}
 	}
-	fmt.Println("hwllo")
-
 }
 
 func main() {
@@ -93,20 +91,44 @@ func main() {
 			}
 		}
 	}
+
 	fmt.Print(len(carts))
 	crashX, crashY := 0, 0
 
-	for crashX == 0 && crashY == 0 {
-		for i := 0; i < len(carts); i++ {
+	for len(carts) != 1 {
+		crashed := make([]bool, len(carts))
+		for i := range carts {
 			fmt.Println(carts[i], i)
 			carts[i].tick(grid)
-			/* for j := i; j < len(carts); j++ {
-				if carts[i].x == carts[j].x && carts[i].y == carts[j].y {
-					crashX, crashY = carts[i].x, carts[i].y
-					fmt.Println("whut")
-					break
+
+			for j, c := range carts {
+				if carts[i].x == c.x && carts[i].y == c.y && i != j {
+					if crashed[i] || crashed[j] { // Already crashed
+						continue
+					}
+					crashed[i] = true
+					crashed[j] = true
+
+					if crashX == 0 || crashY == 0 { // First crash for Part 1
+						crashX, crashY = c.x, c.y
+					}
 				}
-			} */
+			}
 		}
+
+		// Remove crashed for Part 2
+		removeCrashed := carts[:0]
+		for i, c := range carts {
+			if !crashed[i] {
+				removeCrashed = append(removeCrashed, c)
+			}
+		}
+		carts = removeCrashed
 	}
+
+	// Part 1
+	fmt.Printf("%d,%d\n", crashX, crashY)
+
+	// Part 2
+	fmt.Printf("%d,%d\n", carts[0].x, carts[0].y)
 }
