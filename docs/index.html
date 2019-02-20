@@ -26,7 +26,7 @@ In here I will *try* 🤷‍♂️ to save some of the most important lessons of
 
 <img src="https://up.ieee-pt.org/assets/images/ieee.png" alt="drawing" style="width:500px;"/>
 
-bit.ly/ieeegoworkshop
+<a href="https://bit.ly/ieeegoworkshop">bit.ly/ieeegoworkshop</a>
 
 By _Afonso Jorge Ramos_
 ---
@@ -40,21 +40,21 @@ class: center, middle
 [Variables](#9) | 
 [For](#14) | 
 [If](#16) | 
-[Switch](#19) | 
-[Defer](#20)
-[Strings](#21) | 
-[Pointers](#18) | 
-[Structs](#19) | 
-[Arrays](#21) | 
-[Slices](#22) | 
-[Range](#27) | 
-[Maps](#28) | 
-[Function Values](#31)
-[Function Closure](#32) | 
-[Methods](#33) | 
-[Pointer Receivers](#34) | 
-[Interfaces](#36) | 
-[Type Assertions](#40)
+[Range](#17) | 
+[Switch](#20)
+[Defer](#21) |
+[Strings](#22) | 
+[Pointers](#23) | 
+[Structs](#24) | 
+[Arrays](#26) | 
+[Slices](#27) | 
+[Maps](#32) | 
+[Function Values](#35)
+[Function Closure](#36) | 
+[Methods](#37) | 
+[Pointer Receivers](#38) | 
+[Interfaces](#43) | 
+[Type Assertions](#47)
 
 ---
 
@@ -353,6 +353,26 @@ As you can see, the short statement is also available inside any of the `else` b
 
 ---
 
+#### Range
+
+The `range` form of the `for` loop iterates over a `slice` or `map` returning two values for each iteration. The first is the index, and the second is a copy of the element at that index. However, you can also only ask for one of the elements, skipping the index by assigning to _, or if you only want the index, dropping the value entirely.
+
+```go
+for index, value := range myslice {
+	//
+}
+for index := range myslice {
+	//
+}
+for _, value := range myslice {
+	//
+}
+```
+
+[⬆ Back to the top!](#2)
+
+---
+
 #### Exercise
 
 With all of this knowledge I think we are now able to create a small function to check if a range of numbers is prime or not!
@@ -545,61 +565,6 @@ func main() {
 
 ---
 
-#### Exercise
-
-We all play games!
-
-Let's consider a game where only two dimensions are accounted for.
-
-Using a Struct, a For, an If and a Switch can you create a program that can parse through a line of movement commands?
-
-```go
-wsawddwwawddsawdsdwawwdasdwawwdaawaaddddwddds
-```
-
-Output is expected to be like so:
-```go
-{0 0}
-```
-
----
-
-#### Solution
-```go
-type Position struct {
-	X int
-	Y int
-}
-
-func readLine() (string) {
-    var str string
-    _, err := fmt.Scanln(&str)
-	if err != nil {
-	    fmt.Print("  Scan for i failed, due to ", err)
-    }
-    return str
-}
-
-func calculatePos(mov string, pos *Position) {
-    for _, c := range mov {
-		switch c {
-        	case 'w':   pos.Y++
-        	case 'a':   pos.X--
-        	case 's':   pos.Y--
-    		case 'd':   pos.X++
-        	default:    fmt.Println("Character not recognized")
-}}}
-
-func main() {
-	str := readLine()
-    pos := Position{0, 0}
-    calculatePos(str,&pos)
-    fmt.Println(pos)
-}
-```
-
----
-
 #### Arrays 
 
 The type `[n]T` is an array of `n` values of type `T`. For example, `var a [10]int` declares a variable `a` as an array of *ten* integers.
@@ -726,26 +691,6 @@ s = append(s, 2, 3, 4)	// output -> len=5 cap=8 [0 1 2 3 4]
 ```
 
 > Only pay attention to the length since capacity is more or less pseudo-random. What actually happens is that when you create the new underlying array, it copies all the values over, and then set that as the backing array for the slice. And when appending lots of values, there would be a need to do one copy for every single value, which would be very slow, so instead the runtime allocates more space than it thinks you need so that it has to make copies less often. If you still want to read a more in-depth guide about slices, go to [Golang's blog](https://blog.golang.org/go-slices-usage-and-internals).
-
-[⬆ Back to the top!](#2)
-
----
-
-#### Range
-
-The `range` form of the `for` loop iterates over a `slice` or `map` returning two values for each iteration. The first is the index, and the second is a copy of the element at that index. However, you can also only ask for one of the elements, skipping the index by assigning to _, or if you only want the index, dropping the value entirely.
-
-```go
-for index, value := range myslice {
-	//
-}
-for index := range myslice {
-	//
-}
-for _, value := range myslice {
-	//
-}
-```
 
 [⬆ Back to the top!](#2)
 
@@ -908,9 +853,100 @@ func main() {
 ---
 For the statement `pos.Scale(10)`, even though `pos` is a value and not a pointer, the method with the pointer receiver is called automatically because Go interprets the statement `pos.Scale(10)` as a theoretical `(&pos).Scale(10)` since the Scale method has a pointer receiver.
 
-Pointer receivers are extremely useful! Check out my first usages of it [Day 3 Solution](https://github.com/afonsojramos/advent-of-code-2018/blob/master/src/day-04/3.go)/[Day 4 Solution](https://github.com/afonsojramos/advent-of-code-2018/tree/master/src/day-04/4.go)! But basically, it allows the method to modify the value that its receiver points to and it avoids copying the value on each method call (very nice in terms of efficiency, especially with big structs).
+Pointer receivers are extremely useful! Check out my first usages of it Advent of Code's [Day 4 Solution](https://github.com/afonsojramos/advent-of-code-2018/blob/master/src/day-04/4.go)/[Day 13 Solution](https://github.com/afonsojramos/advent-of-code-2018/tree/master/src/day-13/13.go)! But basically, it allows the method to modify the value that its receiver points to and it avoids copying the value on each method call (very nice in terms of efficiency, especially with big structs).
 
 [⬆ Back to the top!](#2)
+
+---
+
+#### Exercise
+
+We all play games!
+
+Let's consider a game where only two dimensions are accounted for.
+
+Using a Struct, a For, an If, Slices, Pointers, Pointer Receivers and a Switch can you create a program that can parse through a line of movement commands?
+
+```go
+wsawddwwawddsawdsdwawwdasdwawwdaawaaddddwddds
+```
+
+Output is expected to be like so:
+```go
+{0 0}
+```
+
+---
+
+#### Solution
+```go
+type Position struct {
+	X int
+	Y int
+}
+
+func readLine() (string) {
+    var str string
+    _, err := fmt.Scanln(&str)
+	if err != nil {
+	    fmt.Print("  Scan for i failed, due to ", err)
+    }
+    return str
+}
+
+func calculatePos(mov string, pos *Position) {
+    for _, c := range mov {
+		switch c {
+        	case 'w':   pos.Y++
+        	case 'a':   pos.X--
+        	case 's':   pos.Y--
+    		case 'd':   pos.X++
+        	default:    fmt.Println("Character not recognized")
+}}}
+
+func main() {
+	str := readLine()
+    pos := Position{0, 0}
+    calculatePos(str,&pos)
+    fmt.Println(pos)
+}
+```
+
+---
+
+#### Solution
+```go
+type Position struct {
+	X int
+	Y int
+}
+
+func readLine() (string) {
+    var str string
+    _, err := fmt.Scanln(&str)
+	if err != nil {
+	    fmt.Print("  Scan for i failed, due to ", err)
+    }
+    return str
+}
+
+func (pos *Position) calculatePos(mov string) {
+    for _, c := range mov {
+		switch c {
+        	case 'w':   pos.Y++
+        	case 'a':   pos.X--
+        	case 's':   pos.Y--
+    		case 'd':   pos.X++
+        	default:    fmt.Println("Character not recognized")
+}}}
+
+func main() {
+	str := readLine()
+    pos := Position{0, 0}
+    pos.calculatePos(str)
+    fmt.Println(pos)
+}
+```
 
 ---
 
@@ -1056,6 +1092,69 @@ fmt.Println(f, ok) // output -> 0 false
 f = i.(float64) // panic
 fmt.Println(f)
 ```
+
+[⬆ Back to the top!](#2)
+
+---
+
+#### FINAL Exercise
+
+A crop of this size requires significant logistics to transport produce, soil, fertilizer, and so on. The Elves are very busy pushing things around in carts on some kind of rudimentary system of tracks they've come up with.
+
+Seeing as how cart-and-track systems don't appear in recorded history for another 1000 years, the Elves seem to be making this up as they go along. They haven't even figured out how to avoid collisions yet.
+
+You map out the tracks (your puzzle input) and see where you can help.
+
+Tracks consist of straight paths (| and -), curves (/ and \), and intersections (+). Curves connect exactly two perpendicular pieces of track; for example, this is a closed loop:
+
+```go
+/----\
+|    |
+|    |
+\----/
+```
+
+Intersections occur when two perpendicular paths cross. At an intersection, a cart is capable of turning left, turning right, or continuing straight. Here are two loops connected by two intersections:
+
+---
+
+```go
+/-----\
+|     |
+|  /--+--\
+|  |  |  |
+\--+--/  |
+   |     |
+   \-----/
+```
+
+Several carts are also on the tracks. Carts always face either up (^), down (v), left (<), or right (>). (On your initial map, the track under each cart is a straight path matching the direction the cart is facing.)
+
+Each time a cart has the option to turn (by arriving at any intersection), it turns left the first time, goes straight the second time, turns right the third time, and then repeats those directions starting again with left the fourth time, straight the fifth time, and so on. This process is independent of the particular intersection at which the cart has arrived - that is, the cart has no per-intersection memory.
+
+Carts all move at the same speed; they take turns moving a single step at a time. They do this based on their current location: carts on the top row move first (acting from left to right), then carts on the second row move (again from left to right), then carts on the third row, and so on. Once each cart has moved one step, the process repeats; each of these loops is called a tick.
+
+---
+
+For example, suppose there are two carts on a straight track:
+
+```go
+|  |  |  |  |
+v  |  |  |  |
+|  v  v  |  |
+|  |  |  v  X
+|  |  ^  ^  |
+^  ^  |  |  |
+|  |  |  |  |
+```
+
+First, the top cart moves. It is facing down (v), so it moves down one square. Second, the bottom cart moves. It is facing up (^), so it moves up one square. Because all carts have moved, the first tick ends. Then, the process repeats, starting with the first cart. The first cart moves down, then the second cart moves up - right into the first cart, colliding with it! (The location of the crash is marked with an X.) This ends the second and last tick.
+
+Now, try to find the first collision on the following [input](https://github.com/afonsojramos/advent-of-code-2018/blob/master/src/day-13/13.input).
+
+You may find the solution [here](https://github.com/afonsojramos/advent-of-code-2018/blob/master/src/day-13/13.go), but only look at it if you really need to! 
+
+Try to find a different way of solving this problem!
 
 [⬆ Back to the top!](#2)
 
