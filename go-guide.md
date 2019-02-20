@@ -23,6 +23,7 @@ In here I will *try* 🤷‍♂️ to save some of the most important lessons I 
 19. [Methods](#methods)
 20. [Function Closure](#poiter-receivers)
 21. [Interfaces](#interfaces)
+22. [Type Assertions](#type-assertions)
 
 
 
@@ -784,6 +785,34 @@ func main() {
     human.Age = 3
     fmt.Printf("%#v %T\n", human.Age, human.Age) // output -> 3 int
 }
+```
+
+[⬆ Back to the top!](#table-of-contents)
+
+#### Type Assertions
+
+A type assertion provides access to an interface value's underlying concrete value. 
+```go
+t := i.(T)
+```
+This statement asserts that the interface value `i` holds the concrete type `T` and assigns the underlying `T` value to the variable `t`.
+
+If `i` does not hold a `T`, the statement will trigger a panic, which can be handled since a type assertion can return two values: the underlying value and a boolean value that reports whether the assertion succeeded.
+
+```go
+var i interface{} = "hello"
+
+s := i.(string)
+fmt.Println(s) // output -> hello
+
+s, ok := i.(string)
+fmt.Println(s, ok) // output -> hello true
+
+f, ok := i.(float64)
+fmt.Println(f, ok) // output -> 0 false
+
+f = i.(float64) // panic
+fmt.Println(f)
 ```
 
 [⬆ Back to the top!](#table-of-contents)
