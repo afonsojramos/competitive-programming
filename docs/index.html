@@ -29,34 +29,55 @@ In here I will *try* 🤷‍♂️ to save some of the most important lessons of
 <a href="https://bit.ly/ieeegoworkshop">bit.ly/ieeegoworkshop</a>
 
 By _Afonso Jorge Ramos_
+
 ---
+
+class: middle
+
+**Go**, often styled **Golang** for easier searching, is a programming language guided by simplicity. It is:
+
+1. Compiled
+2. Concurrent
+3. Statically-typed
+4. Garbage-collected
+5. Efficient
+6. Scalable
+7. Readable
+8. Fast
+9. Open-source
+
+[Why should you learn Go?](https://medium.com/@kevalpatel2106/why-should-you-learn-go-f607681fad65)
+
+---
+
 class: center, middle
 
 ### Table of Contents
-[Install](#3) | 
-[Packages](#4) | 
-[Imports](#5) | 
-[Functions](#8) | 
-[Variables](#9) | 
-[For](#14) | 
-[If](#16) | 
-[Range](#17) | 
-[Switch](#20)
-[Defer](#21) |
-[Strings](#22) | 
-[Pointers](#23) | 
-[Structs](#24) | 
-[Arrays](#26) | 
-[Slices](#27) | 
-[Maps](#32) | 
-[Function Values](#35)
-[Function Closure](#36) | 
-[Methods](#37) | 
-[Pointer Receivers](#38) | 
-[Interfaces](#43) | 
-[Type Assertions](#47)
+[Install](#4) | 
+[Packages](#5) | 
+[Imports](#6) | 
+[Functions](#9) | 
+[Variables](#10) | 
+[For](#15) | 
+[If](#17) | 
+[Range](#18) | 
+[Switch](#21)
+[Defer](#22) |
+[Strings](#23) | 
+[Pointers](#24) | 
+[Structs](#25) | 
+[Arrays](#27) | 
+[Slices](#28) | 
+[Maps](#33) | 
+[Function Values](#36)
+[Function Closure](#37) | 
+[Methods](#38) | 
+[Pointer Receivers](#39) | 
+[Interfaces](#44) | 
+[Type Assertions](#48)
 
 ---
+class: middle
 
 #### Install
 
@@ -75,9 +96,10 @@ If you're using [VSCode's Go extension](https://github.com/Microsoft/vscode-go),
 "go.gopath" = "$GOPATH"
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Packages
 
@@ -98,9 +120,10 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Imports
 
@@ -119,6 +142,7 @@ import (
 [⬆ Back to the top!](#go-guide-)
 
 ---
+class: middle
 
 #### Exercise
 
@@ -130,6 +154,7 @@ Hello World
 ```
 
 ---
+class: middle
 
 #### Solution
 ```go
@@ -143,6 +168,7 @@ func main() {
 ```
 
 ---
+class: middle
 
 #### Functions
 
@@ -166,9 +192,10 @@ func moduleOf2(num int) (x int) {
 }
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Variables
 
@@ -187,6 +214,7 @@ var this, is, pretty, cool bool
 ```
 
 ---
+class: middle
 
 Inside a function, the `:=` **short assignment statement** can be used in place of a var declaration with implicit type.
 
@@ -215,6 +243,7 @@ var (
 ```
 
 ---
+class: middle
 
 Go's **basic variable types** are
 
@@ -245,6 +274,7 @@ Variables declared without an explicit initial value are given their *zero value
 - "" (the empty string) for strings.
 
 ---
+class: middle
 
 You can have **type conversion** by simply using expression `T(v)` converts the value `v` to the type `T`.
 
@@ -271,6 +301,7 @@ g -> complex128
 */
 ```
 ---
+class: middle
 
 **Constants** cannot be declared using the := syntax and can be character, string, boolean, or numeric values.
 
@@ -287,9 +318,10 @@ const (
 )
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### For
 
@@ -311,6 +343,7 @@ for ; sum < 1000; {
 ```
 
 ---
+class: middle
 
 And so are the semicolons, the **For is Go's "while"**
 
@@ -323,9 +356,10 @@ for sum < 1000 {
 
 The so called "while (true)" can be just written like this: **`for {		}`**
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### If
 
@@ -349,9 +383,10 @@ if grade := getGrade(); grade > 10 {
 
 As you can see, the short statement is also available inside any of the `else` blocks, making it extremely useful to reduce the number of calls of a certain function. This is also really good in terms of performance, since the variable is only available inside these blocks and does not occupy a place in the stack.
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Range
 
@@ -369,9 +404,10 @@ for _, value := range myslice {
 }
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Exercise
 
@@ -391,6 +427,7 @@ Tips
 </details>    
 
 ---
+class: middle
 
 #### Solution
 ```go
@@ -424,6 +461,7 @@ func main() {
 ```
 
 ---
+class: middle
 
 #### Switch
 
@@ -444,9 +482,10 @@ switch state := getGameState(); state {
 
 A `switch true { }` can also be used, either with true or not (`switch { }`), effectively creating a clean if-then-else chain.
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Defer
 
@@ -470,9 +509,10 @@ for i := 0; i < 10; i++ {
 // output -> 9 8 7 6 5 4 3 2 1 0
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Strings 
 
@@ -493,9 +533,10 @@ func CharCounts(s string) map[rune]int {
 }
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Pointers 
 
@@ -514,9 +555,10 @@ p = &port         		// pointer to port
 fmt.Println(port) 		// see the new value of port
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Structs 
 
@@ -545,6 +587,7 @@ fmt.Println(pos)
 ```
 
 ---
+class: middle
 
 A **struct literal** denotes a newly allocated struct value by listing the values of its fields. You can also list just a subset of fields by using the `Name:` syntax. The special prefix `&` returns a pointer to the struct value.
 
@@ -561,9 +604,10 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Arrays 
 
@@ -582,9 +626,10 @@ countToSix := [6]int{1, 2, 3, 4, 5, 6}
 fmt.Println(countToSix) // output -> [1 2 3 4 5 6]
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Slices 
 
@@ -606,6 +651,7 @@ var s []int = countToSix[1:4] // output -> [2 3 4]
 ```
 
 ---
+class: middle
 
 However, deep down, slices are like references to arrays and do not store any data, they just describe a section of an underlying array. Changing the elements of a slice modifies the corresponding elements of its underlying array. 
 
@@ -631,6 +677,7 @@ This is an array literal: `[3]bool{true, true, false}`
 And this creates the same array as above, then builds a slice that references it: `[]bool{true, true, false}`
 
 ---
+class: middle
 
 When slicing, you may omit the high or low bounds to use their **slice defaults** instead.
 
@@ -657,6 +704,7 @@ func printSlice(s []int) {
 ```
 
 ---
+class: middle
 
 Slices have a zero value of `nil` with length and capacity of 0 and no underlying array.
 
@@ -677,6 +725,7 @@ d := c[2:5]		// output -> d len=3 cap=3 [0 0 0]
 You can also append new elements to a slice, using the provided **`append`** function, being the first parameter a slice of type `T`, and the rest are `T` values to append to the slice. As expected, the resulting value of append is a slice containing all the elements. 
 
 ---
+class: middle
 
 Don't worry about the possibility of the backing array of s being too small to fit all the given values, since a bigger array will be allocated, andt he returned slice will point to the newly allocated array.
 
@@ -692,9 +741,10 @@ s = append(s, 2, 3, 4)	// output -> len=5 cap=8 [0 1 2 3 4]
 
 > Only pay attention to the length since capacity is more or less pseudo-random. What actually happens is that when you create the new underlying array, it copies all the values over, and then set that as the backing array for the slice. And when appending lots of values, there would be a need to do one copy for every single value, which would be very slow, so instead the runtime allocates more space than it thinks you need so that it has to make copies less often. If you still want to read a more in-depth guide about slices, go to [Golang's blog](https://blog.golang.org/go-slices-usage-and-internals).
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Maps
 
@@ -713,6 +763,7 @@ func main() {
 ```
 
 ---
+class: middle
 
 Map literals are also possible, however, the key is necessary! If the top-level type is just a type name, you can omit it from the elements of the literal as seen on the second example.
 
@@ -736,6 +787,7 @@ func main() {
 ```
 
 ---
+class: middle
 
 Insert or update an element in map m: `m[key] = elem`
 
@@ -745,9 +797,10 @@ Delete an element: `delete(m, key)`
 
 Test that a key is present with a two-value assignment: `elem, ok = m[key]` , if key is in m, ok is true. If not, ok is false. If key is not in the map, then elem is the zero value for the map's element type. Of course that elem and ok have to be declared, if not use the short declaration `form elem, ok := m[key]`.
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Function Values
 
@@ -769,9 +822,10 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Function Closures
 
@@ -798,9 +852,10 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Methods
 
@@ -821,9 +876,10 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Pointer Receivers
 
@@ -851,13 +907,15 @@ func main() {
 ```
 
 ---
+class: middle
 For the statement `pos.Scale(10)`, even though `pos` is a value and not a pointer, the method with the pointer receiver is called automatically because Go interprets the statement `pos.Scale(10)` as a theoretical `(&pos).Scale(10)` since the Scale method has a pointer receiver.
 
 Pointer receivers are extremely useful! Check out my first usages of it Advent of Code's [Day 4 Solution](https://github.com/afonsojramos/advent-of-code-2018/blob/master/src/day-04/4.go)/[Day 13 Solution](https://github.com/afonsojramos/advent-of-code-2018/tree/master/src/day-13/13.go)! But basically, it allows the method to modify the value that its receiver points to and it avoids copying the value on each method call (very nice in terms of efficiency, especially with big structs).
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Exercise
 
@@ -877,6 +935,7 @@ Output is expected to be like so:
 ```
 
 ---
+class: middle
 
 #### Solution
 ```go
@@ -913,6 +972,7 @@ func main() {
 ```
 
 ---
+class: middle
 
 #### Solution
 ```go
@@ -949,6 +1009,7 @@ func main() {
 ```
 
 ---
+class: middle
 
 #### Interfaces
 
@@ -981,6 +1042,7 @@ func main() {
 ```
 
 ---
+class: middle
 
 In Go there is no need to explicitly declare the use of an interface, it is implicit, there is no *"implements"* allowing further interoperability as you can see on function `Printsss()`. Basically, they are a way of connecting a value to a type, since it holds a value of a specific underlying concrete type. So if there are two equal methods, with different types it will call the method depending on the value, as you can see below.
 
@@ -1011,6 +1073,7 @@ func main() {
 }
 ```
 ---
+class: middle
 Another amazing thing about go is that if the concrete value inside the interface itself is nil, the method will be called with a nil receiver, **and there will be no null pointer exception!** The below code would now be possible, and an `if t == nil` could, for example, be added to `M()` to handle the nil value.
 
 ```go
@@ -1028,6 +1091,7 @@ var i I
 i.M()
 ```
 ---
+class: middle
 There is also a concept that I find rather interesting which is the **empty interface.** It specifies zero methods and may hold values of any type. Empty interfaces are used by code that handles values of unknown type. For example, `fmt.Print` takes any number of arguments of type `interface{}`.
 
 
@@ -1046,9 +1110,10 @@ func main() {
 }
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
+class: middle
 
 #### Type Assertions
 
@@ -1074,6 +1139,7 @@ var i interface{} = "hello"
 ```
 
 ---
+class: middle
 
 #### Solution
 
@@ -1093,7 +1159,7 @@ f = i.(float64) // panic
 fmt.Println(f)
 ```
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
 ---
 
@@ -1117,6 +1183,7 @@ Tracks consist of straight paths (| and -), curves (/ and \), and intersections 
 Intersections occur when two perpendicular paths cross. At an intersection, a cart is capable of turning left, turning right, or continuing straight. Here are two loops connected by two intersections:
 
 ---
+class: middle
 
 ```go
 /-----\
@@ -1135,6 +1202,7 @@ Each time a cart has the option to turn (by arriving at any intersection), it tu
 Carts all move at the same speed; they take turns moving a single step at a time. They do this based on their current location: carts on the top row move first (acting from left to right), then carts on the second row move (again from left to right), then carts on the third row, and so on. Once each cart has moved one step, the process repeats; each of these loops is called a tick.
 
 ---
+class: middle
 
 For example, suppose there are two carts on a straight track:
 
@@ -1156,7 +1224,7 @@ You may find the solution [here](https://github.com/afonsojramos/advent-of-code-
 
 Try to find a different way of solving this problem!
 
-[⬆ Back to the top!](#2)
+[⬆ Back to the top!](#3)
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
