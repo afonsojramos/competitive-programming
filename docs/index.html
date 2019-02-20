@@ -36,13 +36,13 @@ class: center, middle
 [Install](#3) | 
 [Packages](#4) | 
 [Imports](#5) | 
-[Functions](#6) | 
-[Variables](#7) | 
-[For](#12) | 
-[If](#14) | 
-[Switch](#15) | 
-[Defer](#16)
-[Strings](#17) | 
+[Functions](#8) | 
+[Variables](#9) | 
+[For](#14) | 
+[If](#16) | 
+[Switch](#19) | 
+[Defer](#20)
+[Strings](#21) | 
 [Pointers](#18) | 
 [Structs](#19) | 
 [Arrays](#21) | 
@@ -53,7 +53,8 @@ class: center, middle
 [Function Closure](#32) | 
 [Methods](#33) | 
 [Pointer Receivers](#34) | 
-[Interfaces](#36)
+[Interfaces](#36) | 
+[Type Assertions](#40)
 
 ---
 
@@ -116,6 +117,30 @@ import (
 ```
 
 [⬆ Back to the top!](#go-guide-)
+
+---
+
+#### Exercise
+
+Hello World is always a good place to start! 
+
+Try to code Golang's   
+```go
+Hello World
+```
+
+---
+
+#### Solution
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World")
+}
+```
 
 ---
 
@@ -328,6 +353,58 @@ As you can see, the short statement is also available inside any of the `else` b
 
 ---
 
+#### Exercise
+
+With all of this knowledge I think we are now able to create a small function to check if a range of numbers is prime or not!
+
+Tips
+1. <details>
+    A positive integer which is only divisible by 1 and itself is known as prime number.
+</details>
+
+2. <details>
+    You only need to check if you can divide it to half the numbers value.
+</details>
+
+3. <details>
+    Assume all numbers are prime until proven wrong.
+</details>    
+
+---
+
+#### Solution
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var max int
+    _, err := fmt.Scanln(&max)
+	if err != nil {
+	    fmt.Print("!Scan for i failed, due to ", err)
+	}
+
+	for i := 2; i <= max; i++ {
+		isPrime := true
+		for j := 2; j <= i/2; j++ {
+			if i%j == 0 {
+				isPrime = false
+				break
+			}
+		}
+		if isPrime {
+			fmt.Println(i, "is prime")
+		} else {
+			fmt.Println(i, "is not prime")
+		}
+	}
+}
+
+```
+
+---
+
 #### Switch
 
 Go's switch is like the one found in C, C++, Java, JavaScript, etc. however Go only runs the selected case, not all the cases that follow. In effect, the break statement that is needed at the end of each case in those languages is provided automatically in Go. Another important difference is that Go's switch cases do not need to be constants. And, of course, cases are evaluated from top to bottom, stopping when a case succeeds.
@@ -453,10 +530,10 @@ A **struct literal** denotes a newly allocated struct value by listing the value
 
 ```go
 var (
-	pos1 = Position{1, 2} 	// has type Vertex
+	pos1 = Position{1, 2} 	// has type Position
 	pos2 = Position{X: 1}  	// Y:0 is implicit
 	pos3 = Position{}      	// X:0 and Y:0
-	p  = &Position{1, 2} 	// has type *Vertex
+	p  = &Position{1, 2} 	// has type *Position
 )
 
 func main() {
@@ -465,6 +542,61 @@ func main() {
 ```
 
 [⬆ Back to the top!](#2)
+
+---
+
+#### Exercise
+
+We all play games!
+
+Let's consider a game where only two dimensions are accounted for.
+
+Using a Struct, a For, an If and a Switch can you create a program that can parse through a line of movement commands?
+
+```go
+wsawddwwawddsawdsdwawwdasdwawwdaawaaddddwddds
+```
+
+Output is expected to be like so:
+```go
+{0 0}
+```
+
+---
+
+#### Solution
+```go
+type Position struct {
+	X int
+	Y int
+}
+
+func readLine() (string) {
+    var str string
+    _, err := fmt.Scanln(&str)
+	if err != nil {
+	    fmt.Print("  Scan for i failed, due to ", err)
+    }
+    return str
+}
+
+func calculatePos(mov string, pos *Position) {
+    for _, c := range mov {
+		switch c {
+        	case 'w':   pos.Y++
+        	case 'a':   pos.X--
+        	case 's':   pos.Y--
+    		case 'd':   pos.X++
+        	default:    fmt.Println("Character not recognized")
+}}}
+
+func main() {
+	str := readLine()
+    pos := Position{0, 0}
+    calculatePos(str,&pos)
+    fmt.Println(pos)
+}
+```
 
 ---
 
@@ -900,9 +1032,9 @@ var i interface{} = "hello"
 
 // 2. Test if string and boolean report
 
-// 2. Test if float64 and boolean report
+// 3. Test if float64 and boolean report
 
-// 2. Test if float64
+// 4. Test if float64
 ```
 
 ---

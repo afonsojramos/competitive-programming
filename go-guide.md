@@ -392,10 +392,10 @@ A **struct literal** denotes a newly allocated struct value by listing the value
 
 ```go
 var (
-	pos1 = Position{1, 2} 	// has type Vertex
+	pos1 = Position{1, 2} 	// has type Position
 	pos2 = Position{X: 1}  	// Y:0 is implicit
 	pos3 = Position{}      	// X:0 and Y:0
-	p  = &Position{1, 2} 	// has type *Vertex
+	p  = &Position{1, 2} 	// has type *Position
 )
 
 func main() {
