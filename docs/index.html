@@ -26,6 +26,8 @@ In here I will *try* 🤷‍♂️ to save some of the most important lessons of
 
 <img src="https://up.ieee-pt.org/assets/images/ieee.png" alt="drawing" style="width:500px;"/>
 
+bit.ly/ieeegoworkshop
+
 By _Afonso Jorge Ramos_
 ---
 class: center, middle
@@ -774,7 +776,7 @@ func main() {
 ---
 For the statement `pos.Scale(10)`, even though `pos` is a value and not a pointer, the method with the pointer receiver is called automatically because Go interprets the statement `pos.Scale(10)` as a theoretical `(&pos).Scale(10)` since the Scale method has a pointer receiver.
 
-Pointer receivers are extremely useful! Check out my first usages of it [Day 3 Solution](https://github.com/afonsojramos/advent-of-code-2018/blob/master/src/day-04/3.go)/[Day 4 Solution](https://github.com/afonsojramos/advent-of-code-2018/tree/master/src/day-04/4.go)! But basically it allows the method to modify the value that its receiver points to and it avoids copying the value on each method call (very nice in terms of efficiency, especially with big structs).
+Pointer receivers are extremely useful! Check out my first usages of it [Day 3 Solution](https://github.com/afonsojramos/advent-of-code-2018/blob/master/src/day-04/3.go)/[Day 4 Solution](https://github.com/afonsojramos/advent-of-code-2018/tree/master/src/day-04/4.go)! But basically, it allows the method to modify the value that its receiver points to and it avoids copying the value on each method call (very nice in terms of efficiency, especially with big structs).
 
 [⬆ Back to the top!](#2)
 
@@ -851,7 +853,7 @@ i = t
 i.M()
 ```
 
-You cannot however, leave the interface itlsef as a nil! So something like the code below could not be done!
+You cannot however, leave the interface itself as a nil! So something like the code below could not be done!
 
 ```go
 var i I
@@ -878,11 +880,58 @@ func main() {
 
 [⬆ Back to the top!](#2)
 
+---
+
+#### Type Assertions
+
+A type assertion provides access to an interface value's underlying concrete value. 
+```go
+t := i.(T)
+```
+This statement asserts that the interface value `i` holds the concrete type `T` and assigns the underlying `T` value to the variable `t`.
+
+If `i` does not hold a `T`, the statement will trigger a panic, which can be handled since a type assertion can return two values: the underlying value and a boolean value that reports whether the assertion succeeded.
+
+#### Exercise
+```go
+var i interface{} = "hello"
+
+// 1. Test if string 
+
+// 2. Test if string and boolean report
+
+// 2. Test if float64 and boolean report
+
+// 2. Test if float64
+```
+
+---
+
+#### Solution
+
+```go
+var i interface{} = "hello"
+
+s := i.(string)
+fmt.Println(s) // output -> hello
+
+s, ok := i.(string)
+fmt.Println(s, ok) // output -> hello true
+
+f, ok := i.(float64)
+fmt.Println(f, ok) // output -> 0 false
+
+f = i.(float64) // panic
+fmt.Println(f)
+```
+
+[⬆ Back to the top!](#2)
+
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
     <script>
-      var slideshow = remark.create();
+        var slideshow = remark.create();
     </script>
   </body>
 </html>
