@@ -1,15 +1,19 @@
-# advent-of-code-2018
-### 🎄 My submissions for this year's Advent of Code using Golang 🎁🎅
+# Competitive Programming
 
-## **[Go Guide Me! 🏁](https://github.com/afonsojramos/advent-of-code-2018/blob/master/go-guide.md)** - small Golang guide made by me 👨‍💻 
+Collection of all the competitive programming competitions I partook in.
 
-## Advent of Code
-From the [Advent Of Code](https://adventofcode.com) page:
+### [CS Academy](https://csacademy.com/)/[SpOJ](https://www.spoj.com/)/[Hacker Rank](https://www.hackerrank.com/)
 
-*"Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other."*
+Collections of C++ exercises, as these platforms evaluate performance, therefore the language's powerful Standard Library proves highly useful.
 
-## Why Golang
-I've seen Golang being used in a lot of big projects, and since I've never programmed in Go I've decided to learn it! If you want to learn it too, I'm compiling a **[small introductory guide](https://github.com/afonsojramos/advent-of-code-2018/blob/master/go-guide.md)** for it!
+### [CSSBattle](https://cssbattle.dev)
 
-## Disclaimer
-These solutions may be poorly implemented since I'm still learning how to use this language, but I expect an improvement over time. Furthermore, I do not have much free time, so some solutions might seem rushed. Still, I'll try to keep it clean.
+Fun website to train CSS skills, however, do not expect to use these on your day to day CSS, as correctness is not required, and the real purpose is minification. These are mostly one-liners and I might not explain all problems, just the ones that are mainly optimization.
+
+### [Advents of Code](https://adventofcode.com/)
+
+The only Advent calendar I pay attention to. Every year I try a different language, but I don't promise to finish it as sometimes the time restraints are just too tight.
+
+## About
+
+The solutions implemented are my own and they are often a product of quick thinking and coding. I do not intend to make the best code in terms of 'quality', but I intend to have clean solutions that can be interpreted by someone other than me, however, my main objectives are solve the problems as quickly and as efficiently as required, so beware.
