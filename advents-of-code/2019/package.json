@@ -1,0 +1,42 @@
+{
+    "name": "advent-of-code-2019",
+    "version": "1.0.0",
+    "description": "🎄 My submissions for this 2019's Advent of Code - This year in... functional TS 🎁🎅",
+    "main": "index.js",
+    "dependencies": {},
+    "devDependencies": {
+        "@arrows/composition": "^1.2.2",
+        "@types/jest": "^24.9.1",
+        "@types/node": "^12.19.3",
+        "@typescript-eslint/eslint-plugin": "^2.34.0",
+        "@typescript-eslint/parser": "^2.34.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-base": "^14.2.0",
+        "eslint-config-prettier": "^6.15.0",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^10.0.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.2",
+        "prettier": "^1.19.1",
+        "prettier-eslint": "^9.0.2",
+        "ts-node": "^8.10.2",
+        "typescript": "^3.9.7"
+    },
+    "scripts": {
+        "test": "jest --env=node --colors --detectOpenHandles",
+        "ts": "ts-node",
+        "tsc": "tsc",
+        "lint": "eslint *.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/afonsojramos/advent-of-code-2019.git"
+    },
+    "author": "Afonso Ramos",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/afonsojramos/advent-of-code-2019/issues"
+    },
+    "homepage": "https://github.com/afonsojramos/advent-of-code-2019#readme"
+}
