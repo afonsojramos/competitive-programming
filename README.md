@@ -6,6 +6,10 @@ Collection of all the competitive programming competitions I partook in.
 
 Collections of C++ exercises, as these platforms evaluate performance, therefore the language's powerful Standard Library proves highly useful.
 
+### [Hash Code](https://codingcompetitions.withgoogle.com/hashcode/)
+
+Google's Hash Code is a team programming competition for both students and professionals around the world.
+
 ### [CSSBattle](https://cssbattle.dev)
 
 Fun website to train CSS skills, however, do not expect to use these on your day to day CSS, as correctness is not required, and the real purpose is minification. These are mostly one-liners and I might not explain all problems, just the ones that are mainly optimization.
