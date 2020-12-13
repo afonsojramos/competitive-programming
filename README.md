@@ -14,7 +14,7 @@ Google's Hash Code is a team programming competition for both students and profe
 
 Fun website to train CSS skills, however, do not expect to use these on your day to day CSS, as correctness is not required, and the real purpose is minification. These are mostly one-liners and I might not explain all problems, just the ones that are mainly optimization.
 
-### [Advents of Code](https://adventofcode.com/)
+### [Advent of Code](https://adventofcode.com/)
 
 The only Advent calendar I pay attention to. Every year I try a different language, but I don't promise to finish it as sometimes the time restraints are just too tight.
 
